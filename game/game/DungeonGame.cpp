@@ -75,7 +75,7 @@ DungeonGame::DungeonGame(GLuint passedScreenWidth, GLuint passedScreenHeight)
 	Mix_PlayMusic(dungeonMusic, -1);
 
 
-	//Make projectile pool
+	//Make projectile pool  
 	for (size_t index = 0; index < MAX_BULLETS; ++index)
 	{
 		Projectile* playerProjectile = new Projectile(shaderProgram, 1);
@@ -103,14 +103,6 @@ DungeonGame::DungeonGame(GLuint passedScreenWidth, GLuint passedScreenHeight)
 	glClearColor(red, green, blue, 1.0f);
 	//=======Color Setup End=======
 
-	//Make map
-	Map map;
-	map.generateMap(60);
-
-	currentMap = &map;
-
-	//Start out state
-	state = STATE_MAIN_MENU;
 
 
 }
@@ -147,6 +139,14 @@ DungeonGame::~DungeonGame()
 
 void DungeonGame::gameLoop()
 {
+	//Make map
+	Map map;
+	map.generateMap(60);
+
+	currentMap = &map;
+
+	//Start out state
+	state = STATE_MAIN_MENU;
 	//The main game loop
 	while (!quit)
 	{
